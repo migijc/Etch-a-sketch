@@ -1,0 +1,43 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.gridContainer {
+    border: 1px solid black;
+    display: grid;
+    grid-template-columns:auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto;
+    width:500px;
+    height:500px;
+    
+    
+    
+    
+
+    
+    
+}
+
+.squares {
+
+border:1px solid black;
+}
+
+.hoveredOn{
+    background-color: black;
+    color: blue;
+}
+
+button{
+    color:blue
+}
+
+.newGridContainer{
+    border: 1px solid blue;
+    display: grid;
+    grid-template-columns: auto auto ;
+    
+
+}
+
