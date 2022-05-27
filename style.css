@@ -93,6 +93,7 @@ h1{
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    gap:30px;
 }
 
 .changeGrid{
@@ -106,13 +107,28 @@ h1{
     font-family: 'Indie Flower', cursive;
     border: 3px solid #274156;
     box-shadow: 6px 6px 3px #3b3b3b;
-
 }
 
+.trippyColors{
+    background-color: transparent;
+    width: 150px;
+    height: 70px;
+    font-size: 22px;
+    color:White;
+    font-weight: bold;
+    border-radius: 15px;
+    font-family: 'Indie Flower', cursive;
+    border: 3px solid #274156;
+    box-shadow: 6px 6px 3px #3b3b3b;
+}
 
 .optionsHeader {
     color: #b69a9a;
     font-size: 50px;
     margin-top:30px;
     text-shadow: 4px 4px 2px #666060;
+}
+
+.hoveredOn.trippyHoveredOn {
+    color: red;
 }

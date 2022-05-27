@@ -15,6 +15,7 @@
     <div class="options">
         <h1 class="optionsHeader">Options</h1>
         <button class="changeGrid">Grid size</button>
+        <button class="trippyColors">Trippy</button>
     </div>
     <div class="sketchPad">
         <div class="gameHeader">
@@ -31,6 +32,43 @@
     
     
     <script>
+        let getRandomR=function(){
+        const randomR= Math.floor(Math.random() * 256) +1;
+        return(randomR);
+        };
+
+        let getRandomG=function(){
+        const randomG= Math.floor(Math.random() * 256) +1;
+        return(randomG);
+        };
+
+        let getRandomB=function(){
+        const randomB= Math.floor(Math.random() * 256) +1;
+        return(randomB);
+        };
+        
+       
+
+        
+        
+
+        function ifTrippyClicked(){
+            const trippyButton=document.querySelector('.trippyColors'); //storing button
+            trippyButton.addEventListener("click", ()=> { //added event listener to button
+            const trippySquares=document.querySelectorAll('.squares') //storing divs with .squares
+            console.log(trippySquares);
+            trippySquares.forEach((square) => {
+                square.addEventListener("mouseenter", () => {
+                    square.classList.add(`trippyHoveredOn`)
+                    const trippyHoveredOn=document.querySelectorAll(".trippyHoveredOn");//store nodelist of all divs with .trippyHoveredOn
+                    trippyHoveredOn.forEach((trippySquare) => {
+                    trippySquare.style.backgroundColor= `rgb(${getRandomR()}, ${getRandomG()}, ${getRandomB()})`;//changes background color of all .trippyHoveredOn
+                    })
+                })
+            })
+            }) 
+        };       
+    
 
         const gridContainer=document.querySelector('.gridContainer');
         function sixteenGrid(){
@@ -43,6 +81,7 @@
         sixteenGrid();
         
         const eachSquare = document.querySelectorAll(".squares");
+        ifTrippyClicked();
         eachSquare.forEach((square) => {
             square.addEventListener("mouseenter", ()=> {
                 square.classList.add("hoveredOn");
@@ -55,12 +94,10 @@
             let squarePerRow= prompt("Enter the number of rows and columns you would like");
             if(squarePerRow >80){
                 squarePerRow= prompt("Less than 80 Please");
-            }
+            };
             let totalSquares= squarePerRow * squarePerRow;
             sketchPad.removeChild(gridContainer);
             newGrid(totalSquares, squarePerRow);
-            
-        
         })
 
         function newGrid(num, num2){
@@ -72,18 +109,32 @@
                 newGridContainer.appendChild(oneSquare);
                 sketchPad.appendChild(newGridContainer);
                 newGridContainer.style.gridTemplateColumns=`repeat(${num / num2}, 1fr)`;
-
             };
             const eachSquare = document.querySelectorAll(".newSquares");
-            console.log(eachSquare)
             eachSquare.forEach((square) => {
                 square.addEventListener("mouseenter", ()=> {
                     square.classList.add("hoveredOn");
                     square.classList.remove("newSquares")
+                });
             });
-        });
-            
         };
+
+        function ifPsychClicked(){
+            const trippy=document.querySelector('.trippyColors');
+            trippy.addEventListener("mouseenter", ()=> {
+            const trippySquares=document.querySelectorAll('.squares')
+            console.log(trippySquares);
+            trippySquares.forEach((square) => {
+                square.addEventListener("mouseenter", () => {
+                    square.classList.add("trippyHoveredOn")
+                    const trippyHoveredOn=document.querySelectorAll(".trippyHoveredOn");
+                    trippyHoveredOn.forEach((trippySquare) => {
+                        trippySquare.style.backgroundColor= `rgb(${getRandomR()}, ${getRandomG()}, ${getRandomB()})`;
+                    })
+                })
+            })
+            }) 
+        };       
 
 
 
