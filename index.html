@@ -59,11 +59,9 @@
             console.log(trippySquares);
             trippySquares.forEach((square) => {
                 square.addEventListener("mouseenter", () => {
-                    square.classList.add(`trippyHoveredOn`)
-                    const trippyHoveredOn=document.querySelectorAll(".trippyHoveredOn");//store nodelist of all divs with .trippyHoveredOn
-                    trippyHoveredOn.forEach((trippySquare) => {
-                    trippySquare.style.backgroundColor= `rgb(${getRandomR()}, ${getRandomG()}, ${getRandomB()})`;//changes background color of all .trippyHoveredOn
-                    })
+                    square.classList.add(`trippyHoveredOn`);
+                    square.style.backgroundColor= `rgb(${getRandomR()}, ${getRandomG()}, ${getRandomB()})`;//changes background color of all .trippyHoveredOn
+                    
                 })
             })
             }) 
@@ -119,6 +117,7 @@
             });
         };
 
+        //prototype not currently being used. 
         function ifPsychClicked(){
             const trippy=document.querySelector('.trippyColors');
             trippy.addEventListener("mouseenter", ()=> {
