@@ -6,58 +6,86 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Miguel's Sketchpad</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
 </head>
 <body class="body">
 
-    <button class="changeGrid">Change The Grid Size</button>
-    <div class="gridContainer"></div>
+    <div class="options">
+        <h1 class="optionsHeader">Options</h1>
+        <button class="changeGrid">Grid size</button>
+    </div>
+    <div class="sketchPad">
+        <div class="gameHeader">
+            <h1>Etch-A-Sketch</h1>
+        </div>
+        <div class="gridContainer"></div>
+    </div>
+
+    <div class="footer">Etch-A-Sketch developed by Miguel Gil</div>
     
 
+    
+    
+    
+    
     <script>
-        const gridContainer=document.querySelector('.gridContainer')
+
+        const gridContainer=document.querySelector('.gridContainer');
         function sixteenGrid(){
             for (let i=0; i<256; i++) {
-                let oneSquare= document.createElement('div')
-                oneSquare.classList.add("squares")
+                let oneSquare= document.createElement('div');
+                oneSquare.classList.add("squares");
                 gridContainer.appendChild(oneSquare);
-
             }
         }
         sixteenGrid();
-
-        let x= function(e){
-            console.log(e)
-        }
-
+        
         const eachSquare = document.querySelectorAll(".squares");
-        console.log(eachSquare);
         eachSquare.forEach((square) => {
             square.addEventListener("mouseenter", ()=> {
                 square.classList.add("hoveredOn");
-                x();
             });
         });
-        const body= document.querySelector(".body");
-        let buttonPressed= document.querySelector(".changeGrid")
+        
+        const sketchPad= document.querySelector(".sketchPad");
+        let buttonPressed= document.querySelector(".changeGrid");
         buttonPressed.addEventListener('click', ()=> {
-        let squarePerRow= prompt("Enter the number of rows and columns you would like");
-        let totalSquares= squarePerRow * squarePerRow;
-        body.removeChild(gridContainer);
-        newGrid(totalSquares);
+            let squarePerRow= prompt("Enter the number of rows and columns you would like");
+            if(squarePerRow >80){
+                squarePerRow= prompt("Less than 80 Please");
+            }
+            let totalSquares= squarePerRow * squarePerRow;
+            sketchPad.removeChild(gridContainer);
+            newGrid(totalSquares, squarePerRow);
+            
         
         })
 
-        function newGrid(num){
+        function newGrid(num, num2){
             const newGridContainer=document.createElement('div')
-            newGridContainer.classList.add("newContainer")
+            newGridContainer.classList.add("newContainer");
             for (let i=0; i<num; i++) {
                 let oneSquare= document.createElement('div')
-                oneSquare.classList.add("squares")
+                oneSquare.classList.add("newSquares")
                 newGridContainer.appendChild(oneSquare);
-                body.appendChild(newGridContainer);
+                sketchPad.appendChild(newGridContainer);
+                newGridContainer.style.gridTemplateColumns=`repeat(${num / num2}, 1fr)`;
 
-            }
-        }
+            };
+            const eachSquare = document.querySelectorAll(".newSquares");
+            console.log(eachSquare)
+            eachSquare.forEach((square) => {
+                square.addEventListener("mouseenter", ()=> {
+                    square.classList.add("hoveredOn");
+                    square.classList.remove("newSquares")
+            });
+        });
+            
+        };
+
+
 
         
 
