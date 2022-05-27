@@ -16,6 +16,7 @@
         <h1 class="optionsHeader">Options</h1>
         <button class="changeGrid">Grid size</button>
         <button class="trippyColors">Trippy</button>
+        <button class="disco">Disco mode</button>
     </div>
     <div class="sketchPad">
         <div class="gameHeader">
@@ -52,7 +53,7 @@
         
         
 
-        function ifTrippyClicked(){
+        function ifTrippyClickedDefault(){
             const trippyButton=document.querySelector('.trippyColors'); //storing button
             trippyButton.addEventListener("click", ()=> { //added event listener to button
             const trippySquares=document.querySelectorAll('.squares') //storing divs with .squares
@@ -79,7 +80,7 @@
         sixteenGrid();
         
         const eachSquare = document.querySelectorAll(".squares");
-        ifTrippyClicked();
+        ifTrippyClickedDefault();
         eachSquare.forEach((square) => {
             square.addEventListener("mouseenter", ()=> {
                 square.classList.add("hoveredOn");
@@ -117,10 +118,9 @@
             });
         };
 
-        //prototype not currently being used. 
-        function ifPsychClicked(){
-            const trippy=document.querySelector('.trippyColors');
-            trippy.addEventListener("mouseenter", ()=> {
+        function ifDiscoClicked(){
+            const discoButton=document.querySelector('.disco');
+            discoButton.addEventListener("click", ()=> {
             const trippySquares=document.querySelectorAll('.squares')
             console.log(trippySquares);
             trippySquares.forEach((square) => {
@@ -135,6 +135,24 @@
             }) 
         };       
 
+        function ifTrippyClickedCustomGrid(){
+            const trippyButtonCG=document.querySelector('.trippyColors'); //storing button
+            trippyButtonCG.addEventListener("click", ()=> { //added event listener to button
+            const trippySquaresCG=document.querySelectorAll('.newSquares') //storing divs with .squares
+            console.log(trippySquaresCG);
+            trippySquaresCG.forEach((square) => {
+                square.addEventListener("mouseenter", () => {
+                    square.classList.add(`trippyHoveredOn`);
+                    square.style.backgroundColor= `rgb(${getRandomR()}, ${getRandomG()}, ${getRandomB()})`;//changes background color of all .trippyHoveredOn
+                    
+                })
+            })
+            }) 
+        };       
+
+        ifTrippyClickedCustomGrid()
+
+       
 
 
         

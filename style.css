@@ -132,3 +132,16 @@ h1{
 .hoveredOn.trippyHoveredOn {
     color: red;
 }
+
+.disco{
+    background-color: transparent;
+    width: 150px;
+    height: 70px;
+    font-size: 22px;
+    color:White;
+    font-weight: bold;
+    border-radius: 15px;
+    font-family: 'Indie Flower', cursive;
+    border: 3px solid #274156;
+    box-shadow: 6px 6px 3px #3b3b3b;
+}
